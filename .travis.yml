@@ -1,19 +1,22 @@
 language: node_js
-
 node_js:
-  - "10"
-
+  - '10'
 sudo: false
-
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
-
 cache:
   yarn: true
   directories:
-    - "node_modules"
-
+    - node_modules
 script:
   - yarn test
   - yarn lint
+deploy:
+  provider: npm
+  email: brodeuralexis@gmail.com
+  api_key:
+    secure: MIMfPW699UZuPSgmTa/d86bwRlKYrUNF3W2ltGbLVyyi0S2B3trGlsp46fr5bMGk190SYQrc3Q57S0ukEvi3iozezBl9K5FDEslCKdZ8Q0gBVMTj5+Wirp6AWw1S5O9e8N7eswrXQ2AqWDZ71WYdqwLNsCxhrBMProiMlg79apjeZjfi1NFp697jHz4is7JrZl9JjgwofbwD1+JRdnBAZsKznJ4zUiYXw/kVGGHXWd/hxJB/to6/pTjPysBF2u4QrZv1LwRpF1WfbydJLaBIrpSQ3S5o9IPe9a/7PtmX8cFcdjwqKGh7dhtw6DKjd/3gE/tJHyYw0OSBo1QaL6QO1Pxq+yvYGzM9zzObhusNe4ZK/xAklYl9HiuOjSpPSDtfJ/1uISoobiP9g6/0dHQvdtpM0rpiER4YdhykxLEpWQ6QWZPpR6BXT3HPGy2/NbpdcRi3bg34mNpoSFKgQ9r5rWg9SKPcHkhHGkw8v9RebfdtSF4mpDGX9aPlo+vpMLXJlksGCzctsi7NyYSy1abfXz3BulN/WFZpVrApopotYSmVnfiensWWL4DTji6r50negvVSGujJ+bLqhOMng2oL2TUuiKUepfCHh7P4aMomA/orXdhpmGO6REAjZlAfM98D6vmLliMfUmLuWKQVhcvHRzWJrPSVNyY84AOLMIyM6Eg=
+  on:
+    tags: true
+    repo: brodeuralexis/typedmap
